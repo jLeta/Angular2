@@ -24,3 +24,11 @@
     <label>rename your username: </label> <br/>
     <input type="text" name="name" [(ngModel)]="name" /><br/>
 </form>
+
+<hr/>
+
+<h2>Posts</h2>
+<div *ngFor="let post of postCollection">
+    <h3>{{post.title}}</h3>
+    <p>{{post.body}}</p>
+</div>

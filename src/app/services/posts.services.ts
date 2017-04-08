@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 
 
 @Injectable()
-export class PostServices{
+export class PostService{
     constructor(private http:Http){
         console.log("post service ....");
     }

@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-//import {PostService} from '../services/posts.services';
+import {PostService} from '../services/posts.services';
 
 @Component({
+  
   selector: 'user',
   moduleId: module.id,
-  templateUrl: 'user.component.html'
-  //providers: [PostService]
+  templateUrl: 'user.component.html',
+  providers: [PostService]
 })
 export class UserComponent {
   name: string;
@@ -13,8 +14,9 @@ export class UserComponent {
   address: address;
   hoobies: string[];
   isShowHobbies: boolean;
+  postCollection:Post[];
 
-  constructor() {
+  constructor(private postService:PostService) {
     this.name = 'Angular';
     this.email = 'angular.start@gmail';
 
@@ -27,7 +29,8 @@ export class UserComponent {
     this.isShowHobbies = false;
     this.hoobies = ['sport', 'technology', 'books'];
 
-    //this.postService.getPosts().subscribe(posts => console.log(posts));
+    this.postService.getPosts().subscribe(
+      post => { this.postCollection = post; });
 
   }
 
@@ -51,3 +54,8 @@ interface address {
   streetNumber: number;
 }
 
+interface Post{
+  id:number;
+  title:string;
+  body:string;
+}
